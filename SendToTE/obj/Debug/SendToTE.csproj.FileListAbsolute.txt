@@ -1,0 +1,10 @@
+D:\Personal\GIT\SendToTE\SendToTE\bin\Debug\SendToTE.exe.config
+D:\Personal\GIT\SendToTE\SendToTE\obj\Debug\SendToTE.csprojResolveAssemblyReference.cache
+D:\Personal\GIT\SendToTE\SendToTE\obj\Debug\SendToTE.Properties.Resources.resources
+D:\Personal\GIT\SendToTE\SendToTE\obj\Debug\SendToTE.csproj.GenerateResource.Cache
+D:\Personal\GIT\SendToTE\SendToTE\obj\Debug\SendToTE.Form1.resources
+D:\Personal\GIT\SendToTE\SendToTE\bin\Debug\SendToTE.exe
+D:\Personal\GIT\SendToTE\SendToTE\bin\Debug\SendToTE.pdb
+D:\Personal\GIT\SendToTE\SendToTE\bin\Debug\MySql.Data.dll
+D:\Personal\GIT\SendToTE\SendToTE\obj\Debug\SendToTE.exe
+D:\Personal\GIT\SendToTE\SendToTE\obj\Debug\SendToTE.pdb
