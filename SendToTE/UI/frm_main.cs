@@ -14,13 +14,16 @@ using SendToTE.Model;
 
 namespace SendToTE
 {
-    public partial class Form1 : Form
+    public partial class frm_main : Form
     {
+        private Config iConfig = ConfigManage.getConfig();
+        private String contentTableName;
+
         private Upload upload = new Upload();
-        
+        private bool isContinue = true;
         private IFileManage fileManage = new FileManage();
         private ITypechoDA typechoManage = new TypechoDA();
-        public Form1()
+        public frm_main()
         {
             InitializeComponent();
         }
@@ -36,13 +39,18 @@ namespace SendToTE
                 {
                     pathOld = @"!\[" + imgItem.name + @"\]\((.*?)\)";
 
-                    url = upload.SendFile(imgItem.path, new Uri("http://localhost/typecho/usr/upload_file.php"));
+                    Console.WriteLine(imgItem.path);
 
+                    url = upload.SendFile(imgItem.path, new Uri(iConfig.UploadFileUrl));
+                    //url = upload.SendFile(imgItem.path, new Uri("http://localhost/typecho/usr/upload_file.php"));
                     if (url.Equals("error"))
                     {
+                        isContinue = false;
+                        return;
                         Console.WriteLine("文件上传错误");
                     }else if (url.Equals("exists"))
                     {
+                        isContinue = false;
                         Console.WriteLine("文件已存在");
                     }
                     else
@@ -69,10 +77,13 @@ namespace SendToTE
             content.Slug = tB_slug.Text;
             content.Title = tB_title.Text;
 
-            int cid = typechoManage.sendWrittings(content);
+            //MessageBox.Show(iConfig.PreTableName + "contents");
+
+            int cid = typechoManage.sendWrittings(content, contentTableName);
+
 
             if (content.Slug == "")
-                typechoManage.updateSlug(cid);
+                typechoManage.updateSlug(cid,contentTableName);
 
             setHint("上传文章成功，id：" + cid);
 
@@ -113,6 +124,7 @@ namespace SendToTE
             {
                 GroupCollection gc = match.Groups;
                 ImgFileMsg item = new ImgFileMsg(gc["name"].Value, gc["path"].Value);
+                Console.WriteLine(item.path);
                 fileManage.addImgItem(item);
             }
             setHint("找到 " + matches.Count + " 份附件");
@@ -135,11 +147,16 @@ namespace SendToTE
         /// <param name="e"></param>
         private void button1_Click_1(object sender, EventArgs e)
         {
-            button1.Enabled = false;
             uploadImgAndUpdateText();
-            sendToTypecho();
 
+            if (!isContinue)
+            {
+                panel1.Visible = true;
+                return;
+            }
+            sendToTypecho();
             panel2.Visible = true;
+            button1.Enabled = false;
         }
 
         /// <summary>
@@ -160,7 +177,17 @@ namespace SendToTE
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://539go.com");
+            System.Diagnostics.Process.Start(iConfig.BlogUrl);
+        }
+
+        private void initData()
+        {
+            contentTableName = iConfig.PreTableName + "contents";
+
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            initData();
         }
     }
 }

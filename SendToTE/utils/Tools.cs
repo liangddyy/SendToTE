@@ -5,13 +5,9 @@ namespace SendToTE.Manage
     class Tools
     {
         /// <summary>
-        /// 获取流
+        /// 获取时间戳(现在)
         /// </summary>
-        /// <param name="fileName"></param>
-        /// <param name="uri"></param>
-        /// <param name="encodingType"></param>
         /// <returns></returns>
-
         static public int getDateStampNow()
         {
             System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));

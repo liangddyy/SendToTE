@@ -8,21 +8,18 @@ namespace SendToTE.Ado
     {
         private MySqlConnection conn = SQLCon.getConn();
 
+        private String str = "typecho_contents";
         public int getCid()
         {
 
             return 0;
         }
 
-        public void updateSlug(int cid)
+        public void updateSlug(int cid, String contentTableName)
         {
-
             conn.Open();
+            MySqlCommand cmd = new MySqlCommand("update "+contentTableName+" set slug=@slug where cid=@cid;", conn);
 
-            //todo 表名需要设置
-            MySqlCommand cmd =
-                new MySqlCommand(
-                    "update typecho_contents set slug=@slug where cid=@cid;", conn);
             cmd.Parameters.AddWithValue("@slug", cid);
             cmd.Parameters.AddWithValue("@cid", cid);
 
@@ -33,14 +30,12 @@ namespace SendToTE.Ado
             Console.WriteLine("修改了slug：" + i);
         }
 
-        public int sendWrittings(Content content)
+        public int sendWrittings(Content content, String contentTableName)
         {
             conn.Open();
-
-            //todo 表名需要设置
             MySqlCommand cmd =
                 new MySqlCommand(
-                    "insert into typecho_contents (title,slug,created,modified,text,authorId,allowComment,allowPing,allowFeed) values(@title,@slug,@created,@modified,@text,@authorId,@allowComment,@allowPing,@allowFeed)",
+                    "insert into " + contentTableName + " (title,slug,created,modified,text,authorId,allowComment,allowPing,allowFeed) values(@title,@slug,@created,@modified,@text,@authorId,@allowComment,@allowPing,@allowFeed)",
                     conn);
             cmd.Parameters.AddWithValue("@title", content.Title);
             cmd.Parameters.AddWithValue("@slug", content.Slug);

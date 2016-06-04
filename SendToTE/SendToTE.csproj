@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,6 +52,7 @@
       <HintPath>..\..\csharp-sdk\dll\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,25 +65,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ado\ITypechoDA.cs" />
-    <Compile Include="Ado\SQLCon.cs" />
-    <Compile Include="Ado\TypechoDA.cs" />
-    <Compile Include="UI\frm_main.cs">
+    <Compile Include="bean\Config.cs" />
+    <Compile Include="control\ConfigManage.cs" />
+    <Compile Include="db\ITypechoDA.cs" />
+    <Compile Include="db\SQLCon.cs" />
+    <Compile Include="db\TypechoDA.cs" />
+    <Compile Include="test\AppConfigSettings.cs" />
+    <Compile Include="test\JsonTest.cs" />
+    <Compile Include="ui\frm_main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\frm_main.Designer.cs">
+    <Compile Include="ui\frm_main.Designer.cs">
       <DependentUpon>frm_main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Manage\FileManage.cs" />
-    <Compile Include="Manage\IFileManage.cs" />
-    <Compile Include="Manage\Tools.cs" />
-    <Compile Include="Manage\Upload.cs" />
-    <Compile Include="Model\Content.cs" />
-    <Compile Include="Model\ImgFileMsg.cs" />
-    <Compile Include="Model\TextFileMsg.cs" />
+    <Compile Include="control\FileManage.cs" />
+    <Compile Include="control\IFileManage.cs" />
+    <Compile Include="ui\frm_setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\frm_setting.Designer.cs">
+      <DependentUpon>frm_setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="utils\Tools.cs" />
+    <Compile Include="control\Upload.cs" />
+    <Compile Include="bean\Content.cs" />
+    <Compile Include="bean\ImgFileMsg.cs" />
+    <Compile Include="bean\TextFileMsg.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="UI\frm_main.resx">
+    <EmbeddedResource Include="ui\frm_main.resx">
       <DependentUpon>frm_main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -79,6 +105,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ui\frm_setting.resx">
+      <DependentUpon>frm_setting.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,6 +120,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

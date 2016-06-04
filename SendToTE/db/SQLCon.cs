@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using SendToTE.Manage;
 
 namespace SendToTE.Ado
 {
@@ -9,7 +10,9 @@ namespace SendToTE.Ado
         {
             if (conn == null)
             {
-                return new MySqlConnection("server=localhost;user id=root;password=;database=test;Charset=utf8;");
+                return new MySqlConnection(ConfigManage.getSqlConnectionCmd());
+                //return new MySqlConnection("server=localhost;user id=root;password=;database=test;Charset=utf8;");
+                
             }
             return conn;
         }
