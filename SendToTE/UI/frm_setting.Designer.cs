@@ -54,27 +54,27 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(135, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "服务器地址：";
+            this.label1.Text = "数据库地址：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("楷体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(89, 92);
+            this.label2.Location = new System.Drawing.Point(47, 92);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 20);
+            this.label2.Size = new System.Drawing.Size(135, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "用户名：";
+            this.label2.Text = "数据库用户：";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("楷体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(110, 136);
+            this.label3.Location = new System.Drawing.Point(47, 136);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 20);
+            this.label3.Size = new System.Drawing.Size(135, 20);
             this.label3.TabIndex = 2;
-            this.label3.Text = "密码：";
+            this.label3.Text = "数据库密码：";
             // 
             // label4
             // 
@@ -139,7 +139,7 @@
             this.tB_database.Name = "tB_database";
             this.tB_database.Size = new System.Drawing.Size(158, 30);
             this.tB_database.TabIndex = 10;
-            this.tB_database.Text = "test";
+            this.tB_database.Text = "typecho";
             // 
             // tB_preTableName
             // 
