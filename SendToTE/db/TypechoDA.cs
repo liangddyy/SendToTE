@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 using SendToTE.Model;
 
@@ -55,6 +58,37 @@ namespace SendToTE.Ado
             conn.Close();
             return i;
         }
+        public List<Metas> selMetas()
+        {
+            Metas metas = new Metas();
+            List<Metas> list = new List<Metas>();
+            
+            MySqlDataAdapter sda = new MySqlDataAdapter("select * from typecho_metas", conn);
+            DataSet ds = new DataSet();
+            sda.Fill(ds);
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                metas.Mid = dr[0].ToString();
+                metas.Name = (string) dr[1];
+                list.Add(metas);
+            }
+            return list;
+        }
 
+        public void insertRelations(int cid, int mid, string contentTableName)
+        {
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("insert into " + contentTableName + " (cid,mid) values(@cid,@mid)",
+                    conn);
+
+            cmd.Parameters.AddWithValue("@cid", cid);
+            cmd.Parameters.AddWithValue("@mid", mid);
+
+            cmd.ExecuteNonQuery();
+            cmd.CommandText = "select @@IDENTITY";
+            int i = Convert.ToInt32(cmd.ExecuteScalar());
+            conn.Close();
+            Console.WriteLine("插入relations：" + i);
+        }
     }
 }

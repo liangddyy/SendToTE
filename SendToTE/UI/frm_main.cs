@@ -18,15 +18,19 @@ namespace SendToTE
     {
         private Config iConfig = ConfigManage.getConfig();
         private String contentTableName;
+        private String relationsTableName;
 
         private Upload upload = new Upload();
         private bool isContinue = true;
+
         private IFileManage fileManage = new FileManage();
-        private ITypechoDA typechoManage = new TypechoDA();
+        private ITypechoDA teManage = new TypechoDA();
+
         public frm_main()
         {
             InitializeComponent();
         }
+
         void uploadImgAndUpdateText()
         {
             String text = rtb_main.Text;
@@ -47,7 +51,7 @@ namespace SendToTE
                     {
                         isContinue = false;
                         return;
-                        Console.WriteLine("文件上传错误");
+                        
                     }else if (url.Equals("exists"))
                     {
                         isContinue = false;
@@ -79,11 +83,13 @@ namespace SendToTE
 
             //MessageBox.Show(iConfig.PreTableName + "contents");
 
-            int cid = typechoManage.sendWrittings(content, contentTableName);
+            int cid = teManage.sendWrittings(content, contentTableName);
 
+            //更新slug
+            teManage.updateSlug(cid,contentTableName);
 
-            if (content.Slug == "")
-                typechoManage.updateSlug(cid,contentTableName);
+            string mid = (comboBoxMetas.Text.ToString().Split('-'))[1];
+            teManage.insertRelations(cid,int.Parse(mid),relationsTableName);
 
             setHint("上传文章成功，id：" + cid);
 
@@ -101,7 +107,7 @@ namespace SendToTE
 
         }
         /// <summary>
-        /// 读取文件信息并提取需要上传的附件信息
+        /// 读取文件信息并提取需要上传的附件信息*
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -138,8 +144,8 @@ namespace SendToTE
         void setHint(String hint)
         {
             tSSL_hint.Text = hint;
-
         }
+
         /// <summary>
         /// 一键提交
         /// </summary>
@@ -155,6 +161,7 @@ namespace SendToTE
                 return;
             }
             sendToTypecho();
+
             panel2.Visible = true;
             button1.Enabled = false;
         }
@@ -170,6 +177,7 @@ namespace SendToTE
             panel2.Visible = false;
             panel1.Visible = true;
         }
+
         /// <summary>
         /// 打开博客
         /// </summary>
@@ -182,12 +190,33 @@ namespace SendToTE
 
         private void initData()
         {
+            relationsTableName = iConfig.PreTableName + "relationships";
             contentTableName = iConfig.PreTableName + "contents";
 
+        }
+
+        private void initView()
+        {
+            List<Metas> metasList = teManage.selMetas();
+            comboBoxMetas.Items.Clear();
+            for (int i = 0; i < metasList.Count; i++)
+            {
+                comboBoxMetas.Items.Add(metasList[i].toString());
+            }
+            comboBoxMetas.SelectedIndex = 0;
+            //设置只读
+            comboBoxMetas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             initData();
+            initView();
+        }
+
+        //关闭程序
+        private void frm_main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System;
+using MySql.Data.MySqlClient;
 using SendToTE.Manage;
 
 namespace SendToTE.Ado
@@ -15,6 +16,23 @@ namespace SendToTE.Ado
                 
             }
             return conn;
+        }
+
+        public static bool getIsAble()
+        {
+            try
+            {
+                getConn().Open();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                getConn().Close();
+            }
         }
     }
 }

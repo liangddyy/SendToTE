@@ -9,13 +9,17 @@ namespace SendToTE.Manage
     /// </summary>
     public class ConfigManage
     {
-        //public static bool isData = false;
-        //public static bool isValid = false;
+        
+        public static bool isInit = false;
 
         private static Config mConfig = new Config();
 
         public static Config getConfig()
         {
+            if(isInit==false)
+            {
+                return initConfig();
+            }
             return mConfig;
         }
         public static Config initConfig()
@@ -28,10 +32,11 @@ namespace SendToTE.Manage
             mConfig.PreTableName = AppConfigSettings.GetValue("preTableName");
             mConfig.BlogUrl = AppConfigSettings.GetValue("blogUrl");
 
-            if (mConfig.DbServer == "")
+            if (mConfig.DbServer == ""||mConfig.DbUser==""|| mConfig.Database=="")
             {
                 return null;
             }
+            isInit = true;
             return mConfig;
         }
 

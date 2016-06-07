@@ -66,12 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bean\Config.cs" />
+    <Compile Include="bean\Metas.cs" />
     <Compile Include="control\ConfigManage.cs" />
     <Compile Include="db\ITypechoDA.cs" />
     <Compile Include="db\SQLCon.cs" />
     <Compile Include="db\TypechoDA.cs" />
-    <Compile Include="test\AppConfigSettings.cs" />
-    <Compile Include="test\JsonTest.cs" />
+    <Compile Include="utils\AppConfigSettings.cs" />
     <Compile Include="ui\frm_main.cs">
       <SubType>Form</SubType>
     </Compile>

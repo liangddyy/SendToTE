@@ -221,6 +221,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frm_setting";
             this.Text = "配置";
+            this.Load += new System.EventHandler(this.frm_setting_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

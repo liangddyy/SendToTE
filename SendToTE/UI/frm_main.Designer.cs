@@ -42,6 +42,8 @@
             this.tB_slug = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxMetas = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -81,7 +83,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(700, 370);
+            this.button1.Location = new System.Drawing.Point(694, 370);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(119, 60);
             this.button1.TabIndex = 12;
@@ -131,7 +133,7 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button3);
-            this.panel2.Location = new System.Drawing.Point(673, 104);
+            this.panel2.Location = new System.Drawing.Point(673, 117);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(155, 247);
             this.panel2.TabIndex = 20;
@@ -172,7 +174,7 @@
             // tB_slug
             // 
             this.tB_slug.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tB_slug.Location = new System.Drawing.Point(504, 6);
+            this.tB_slug.Location = new System.Drawing.Point(482, 6);
             this.tB_slug.Name = "tB_slug";
             this.tB_slug.Size = new System.Drawing.Size(79, 30);
             this.tB_slug.TabIndex = 19;
@@ -182,7 +184,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(424, 9);
+            this.label3.Location = new System.Drawing.Point(402, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 20);
             this.label3.TabIndex = 18;
@@ -199,11 +201,33 @@
             this.label2.TabIndex = 17;
             this.label2.Text = "标题：";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.ForeColor = System.Drawing.Color.Blue;
+            this.label5.Location = new System.Drawing.Point(580, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 20);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "分类：";
+            // 
+            // comboBoxMetas
+            // 
+            this.comboBoxMetas.FormattingEnabled = true;
+            this.comboBoxMetas.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.comboBoxMetas.Location = new System.Drawing.Point(646, 13);
+            this.comboBoxMetas.Name = "comboBoxMetas";
+            this.comboBoxMetas.Size = new System.Drawing.Size(131, 20);
+            this.comboBoxMetas.TabIndex = 22;
+            // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 472);
+            this.Controls.Add(this.comboBoxMetas);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
@@ -214,7 +238,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Name = "frm_main";
-            this.Text = "SendToTE";
+            this.Text = "SendToTE —— 一键提交文章到博客";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm_main_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
             this.panel1.ResumeLayout(false);
@@ -244,6 +269,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBoxMetas;
     }
 }
 

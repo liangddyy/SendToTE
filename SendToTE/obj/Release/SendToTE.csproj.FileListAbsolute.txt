@@ -2,8 +2,9 @@ D:\Personal\GIT\SendToTE\SendToTE\bin\Release\SendToTE.exe.config
 D:\Personal\GIT\SendToTE\SendToTE\bin\Release\SendToTE.exe
 D:\Personal\GIT\SendToTE\SendToTE\bin\Release\SendToTE.pdb
 D:\Personal\GIT\SendToTE\SendToTE\bin\Release\MySql.Data.dll
-D:\Personal\GIT\SendToTE\SendToTE\obj\Release\SendToTE.Form1.resources
 D:\Personal\GIT\SendToTE\SendToTE\obj\Release\SendToTE.Properties.Resources.resources
 D:\Personal\GIT\SendToTE\SendToTE\obj\Release\SendToTE.csproj.GenerateResource.Cache
 D:\Personal\GIT\SendToTE\SendToTE\obj\Release\SendToTE.exe
 D:\Personal\GIT\SendToTE\SendToTE\obj\Release\SendToTE.pdb
+D:\Personal\GIT\SendToTE\SendToTE\obj\Release\SendToTE.frm_main.resources
+D:\Personal\GIT\SendToTE\SendToTE\obj\Release\SendToTE.ui.frm_setting.resources

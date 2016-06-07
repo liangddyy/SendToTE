@@ -15,7 +15,7 @@ namespace SendToTE.ui
 {
     public partial class frm_setting : Form
     {
-        private Config mConfig= new Config();
+        private Config mConfig;
         public frm_setting()
         {
             InitializeComponent();
@@ -23,6 +23,10 @@ namespace SendToTE.ui
 
         private void initData()
         {
+            if (mConfig == null)
+            {
+                mConfig=new Config();
+            }
             mConfig.DbServer = tB_dbServer.Text;
             mConfig.DbUser = tB_dbUser.Text;
             mConfig.DbPwd = tB_dbPwd.Text;
@@ -36,15 +40,13 @@ namespace SendToTE.ui
         {
             initData();
             ConfigManage.setConfig(mConfig);
-            if (SQLCon.getConn() == null)
+            if (SQLCon.getIsAble())
             {
-                MessageBox.Show("链接失败");
-
+                MessageBox.Show("连接成功");
             }
             else
             {
-                MessageBox.Show("连接成功");
-
+                MessageBox.Show("连接失败,请检查参数!");
             }
         }
 
@@ -52,17 +54,35 @@ namespace SendToTE.ui
         {
             initData();
             ConfigManage.setConfig(mConfig);
-            if (SQLCon.getConn() == null)
-            {
-                MessageBox.Show("数据库连接失败，请检查配置");
-
-            }
-            else
+            if (SQLCon.getIsAble())
             {
                 Form frm = new frm_main();
                 frm.Show();
                 this.Hide();
-
+                
+            }
+            else
+            {
+                MessageBox.Show("数据库连接失败，请检查配置");
+            }
+        }
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frm_setting_Load(object sender, EventArgs e)
+        {
+            mConfig = ConfigManage.getConfig();
+            if (mConfig != null)
+            {
+                tB_dbServer.Text = mConfig.DbServer;
+                tB_dbUser.Text = mConfig.DbUser;
+                tB_dbPwd.Text = mConfig.DbPwd;
+                tB_database.Text = mConfig.Database;
+                tB_preTableName.Text = mConfig.PreTableName;
+                tB_uploadFileUrl.Text = mConfig.UploadFileUrl;
+                tB_blogUrl.Text = mConfig.BlogUrl;
             }
         }
     }
