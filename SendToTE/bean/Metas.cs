@@ -21,7 +21,7 @@ namespace SendToTE.Model
         }
         public string toString()
         {
-            return Name + "-" + Mid;
+            return Name + "                       -" + Mid;
         }
     }
 }

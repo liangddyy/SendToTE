@@ -197,8 +197,9 @@ namespace SendToTE
 
         private void initView()
         {
-            List<Metas> metasList = teManage.selMetas();
+            List<Metas> metasList = teManage.selMetasCategory();
             comboBoxMetas.Items.Clear();
+            
             for (int i = 0; i < metasList.Count; i++)
             {
                 comboBoxMetas.Items.Add(metasList[i].toString());
@@ -216,6 +217,7 @@ namespace SendToTE
         //关闭程序
         private void frm_main_FormClosed(object sender, FormClosedEventArgs e)
         {
+            SQLCon.getConn().Close();
             Application.Exit();
         }
     }

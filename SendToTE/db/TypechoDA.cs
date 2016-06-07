@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -58,16 +59,17 @@ namespace SendToTE.Ado
             conn.Close();
             return i;
         }
-        public List<Metas> selMetas()
+        public List<Metas> selMetasCategory()
         {
-            Metas metas = new Metas();
+            
             List<Metas> list = new List<Metas>();
             
-            MySqlDataAdapter sda = new MySqlDataAdapter("select * from typecho_metas", conn);
+            MySqlDataAdapter sda = new MySqlDataAdapter("select * from typecho_metas where type='category'", conn);
             DataSet ds = new DataSet();
             sda.Fill(ds);
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
+                Metas metas = new Metas();
                 metas.Mid = dr[0].ToString();
                 metas.Name = (string) dr[1];
                 list.Add(metas);

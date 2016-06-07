@@ -100,11 +100,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("楷体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(68, 261);
+            this.label5.Location = new System.Drawing.Point(35, 261);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(114, 20);
+            this.label5.Size = new System.Drawing.Size(147, 20);
             this.label5.TabIndex = 6;
-            this.label5.Text = "上传地址：";
+            this.label5.Text = "php脚本地址：";
             // 
             // tB_dbServer
             // 

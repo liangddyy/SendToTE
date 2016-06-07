@@ -8,7 +8,7 @@ namespace SendToTE.Ado
     {
         int sendWrittings(Content content,String contentTableName);
         void updateSlug(int cid, String contentTableName);
-        List<Metas> selMetas();
+        List<Metas> selMetasCategory();
         void insertRelations(int cid,int mid, String contentTableName);
 
     }
