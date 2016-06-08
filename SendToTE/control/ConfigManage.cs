@@ -30,6 +30,7 @@ namespace SendToTE.Manage
             mConfig.Database = AppConfigSettings.GetValue("database");
             mConfig.Charset = AppConfigSettings.GetValue("charset");
             mConfig.PreTableName = AppConfigSettings.GetValue("preTableName");
+            mConfig.UploadFileUrl = AppConfigSettings.GetValue("uploadFileUrl");
             mConfig.BlogUrl = AppConfigSettings.GetValue("blogUrl");
 
             if (mConfig.DbServer == ""||mConfig.DbUser==""|| mConfig.Database=="")
